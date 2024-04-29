@@ -1,15 +1,15 @@
 package com.example.TwitterProject.Post;
 
 public class PostUpdateRequest {
-    private long postId;
+    private int postID;
     private String postBody;
 
-    public long getPostId() {
-        return postId;
+    public int getPostId() {
+        return postID;
     }
 
-    public void setPostId(long postId) {
-        this.postId = postId;
+    public void setPostId(int postId) {
+        this.postID = postId;
     }
 
     public String getPostBody() {

@@ -20,10 +20,10 @@ public class UserController {
     private UserRepository userRepository;
 
     @PostMapping("/login")
-    public ResponseEntity<?> loginUser(@RequestBody UserAccount user) {
-        UserAccount existingUser = userRepository.findByEmail(user.getEmail());
+    public ResponseEntity<?> loginUser(@RequestBody LoginRequest loginRequest) {
+        UserAccount existingUser = userRepository.findByEmail(loginRequest.getEmail());
         if (existingUser != null) {
-            if (existingUser.getPassword().equals(user.getPassword())) {
+            if (existingUser.getPassword().equals(loginRequest.getPassword())) {
                 return ResponseEntity.ok("Login Successful");
             } else {
                 return new ResponseEntity<>(new ErrorResponse("Username/Password Incorrect"), HttpStatus.UNAUTHORIZED);
@@ -59,7 +59,7 @@ public class UserController {
         return ResponseEntity.ok(users);
     }
     @GetMapping("/user")
-    public ResponseEntity<?> getUserById(@RequestParam Long userID) {
+    public ResponseEntity<?> getUserById(@RequestParam int userID) {
         try {
             UserAccount user = userRepository.findById(userID).orElseThrow(() -> new UserNotFoundException("User does not exist"));
             UserResponseMini users = new UserResponseMini();

@@ -2,7 +2,7 @@ package com.example.TwitterProject.User;
 
 public class UserResponseMini {
     private String name;
-    private Long userID;
+    private int userID;
     private String email;
 
     // getters and setters
@@ -14,11 +14,11 @@ public class UserResponseMini {
         this.name = name;
     }
 
-    public Long getUserID() {
+    public int getUserID() {
         return userID;
     }
 
-    public void setUserID(Long userID) {
+    public void setUserID(int userID) {
         this.userID = userID;
     }
 

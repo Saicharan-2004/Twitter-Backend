@@ -45,9 +45,9 @@ public class PostController {
     }
 
     @GetMapping("/post")
-    public ResponseEntity<?> getPostById(@RequestParam Long id) {
+    public ResponseEntity<?> getPostById(@RequestParam int postID) {
         try {
-            Post post = postRepository.findById(id).orElseThrow(() -> new PostNotFoundException("Post does not exist"));
+            Post post = postRepository.findById(postID).orElseThrow(() -> new PostNotFoundException("Post does not exist"));
 
             PostResponse postResponse = new PostResponse();
             postResponse.setPostID(post.getPostID());
@@ -89,13 +89,12 @@ public class PostController {
     }
 
     @DeleteMapping("/post")
-    public ResponseEntity<?> deletePost(@RequestBody PostDeletionRequest deleteRequest) {
+    public ResponseEntity<?> deletePost(@RequestParam int postID) {
         try {
-            Long id = deleteRequest.getId();
-            if (!postRepository.existsById(id)) {
+            if (!postRepository.existsById(postID)) {
                 throw new PostNotFoundException("Post does not exist");
             }
-            postRepository.deleteById(id);
+            postRepository.deleteById(postID);
             return new ResponseEntity<>("Post deleted successfully", HttpStatus.OK);
         } catch (PostNotFoundException ex) {
             return new ResponseEntity<>(new ErrorResponse(ex.getMessage()), HttpStatus.NOT_FOUND);

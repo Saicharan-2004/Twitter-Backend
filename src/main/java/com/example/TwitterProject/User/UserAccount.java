@@ -11,7 +11,7 @@ public class UserAccount {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private int id;
     private String email;
     private String name;
     private String password;
@@ -23,11 +23,11 @@ public class UserAccount {
     private List<Comment> comments;
     // getters and setters
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

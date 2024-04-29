@@ -1,15 +1,15 @@
 package com.example.TwitterProject.User;
 
 public class UserSummary {
-    private Long userID;
+    private int userID;
     private String name;
     // getters and setters
 
-    public Long getUserID() {
+    public int getUserID() {
         return userID;
     }
 
-    public void setUserID(Long userID) {
+    public void setUserID(int userID) {
         this.userID = userID;
     }
 

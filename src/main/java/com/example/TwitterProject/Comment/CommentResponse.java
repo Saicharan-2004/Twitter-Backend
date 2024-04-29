@@ -3,17 +3,17 @@ package com.example.TwitterProject.Comment;
 import com.example.TwitterProject.User.UserSummary;
 
 public class CommentResponse {
-    private Long commentID;
+    private int commentID;
     private String commentBody;
     private UserSummary commentCreator;
 
     // getters and setters
 
-    public Long getCommentID() {
+    public int getCommentID() {
         return commentID;
     }
 
-    public void setCommentID(Long commentID) {
+    public void setCommentID(int commentID) {
         this.commentID = commentID;
     }
 

@@ -2,8 +2,8 @@ package com.example.TwitterProject.Comment;
 
 public class CreateCommentRequest {
     private String commentBody;
-    private Long postID;
-    private Long userID;
+    private int postID;
+    private int userID;
 
     // getters and setters
     public String getCommentBody() {
@@ -14,19 +14,19 @@ public class CreateCommentRequest {
         this.commentBody = commentBody;
     }
 
-    public Long getPostID() {
+    public int getPostID() {
         return postID;
     }
 
-    public void setPostID(Long postID) {
+    public void setPostID(int postID) {
         this.postID = postID;
     }
 
-    public Long getUserID() {
+    public int getUserID() {
         return userID;
     }
 
-    public void setUserID(Long userID) {
+    public void setUserID(int userID) {
         this.userID = userID;
     }
 }

@@ -2,7 +2,7 @@ package com.example.TwitterProject.Post;
 
 public class NewPostRequest {
     private String postBody;
-    private Long user_id;
+    private int userID;
 
     public String getPostBody() {
         return postBody;
@@ -12,11 +12,11 @@ public class NewPostRequest {
         this.postBody = postBody;
     }
 
-    public Long getUser_id() {
-        return user_id;
+    public int getUser_id() {
+        return userID;
     }
 
-    public void setUser_id(Long user_id) {
-        this.user_id = user_id;
+    public void setUser_id(int user_id) {
+        this.userID = user_id;
     }
 }

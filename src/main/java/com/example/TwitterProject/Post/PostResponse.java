@@ -7,7 +7,7 @@ import java.util.Date;
 import java.util.List;
 
 public class PostResponse {
-    private Long postID;
+    private int postID;
     private String postBody;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private Date date;
@@ -15,11 +15,11 @@ public class PostResponse {
 
     // getters and setters
 
-    public Long getPostID() {
+    public int getPostID() {
         return postID;
     }
 
-    public void setPostID(Long postID) {
+    public void setPostID(int postID) {
         this.postID = postID;
     }
 

@@ -1,5 +1,4 @@
 package com.example.TwitterProject.Comment;
-
 import com.example.TwitterProject.ErrorResponse;
 import com.example.TwitterProject.Exception.CommentNotFoundException;
 import com.example.TwitterProject.Exception.PostNotFoundException;
@@ -8,6 +7,7 @@ import com.example.TwitterProject.Post.Post;
 import com.example.TwitterProject.Post.PostRepository;
 import com.example.TwitterProject.User.UserAccount;
 import com.example.TwitterProject.User.UserRepository;
+import com.example.TwitterProject.User.UserSummary;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -44,22 +44,33 @@ public class CommentController {
     }
 
     @GetMapping("/comment")
-    public ResponseEntity<?> getCommentById(@RequestParam long CommentID) {
+    public ResponseEntity<?> getCommentById(@RequestParam int CommentID) {
         try {
             Comment comment = commentRepository.findById(CommentID).orElseThrow(() -> new CommentNotFoundException("Comment does not exist"));
-            return new ResponseEntity<>(comment, HttpStatus.OK);
+
+            CommentResponse commentResponse = new CommentResponse();
+            commentResponse.setCommentID(comment.getCommentID());
+            commentResponse.setCommentBody(comment.getCommentBody());
+
+            UserSummary userSummary = new UserSummary();
+            userSummary.setUserID(comment.getUserAccount().getId());
+            userSummary.setName(comment.getUserAccount().getName());
+
+            commentResponse.setCommentCreator(userSummary);
+
+            return new ResponseEntity<>(commentResponse, HttpStatus.OK);
         } catch (CommentNotFoundException ex) {
             return new ResponseEntity<>(new ErrorResponse(ex.getMessage()), HttpStatus.NOT_FOUND);
         }
     }
 
     @DeleteMapping("/comment")
-    public ResponseEntity<?> deleteComment(@RequestBody retrieveCommentRequest commentDelete) {
+    public ResponseEntity<?> deleteComment(@RequestParam int commentID) {
         try {
-            if (!commentRepository.existsById(commentDelete.getId())) {
+            if (!commentRepository.existsById(commentID)) {
                 throw new CommentNotFoundException("Comment does not exist");
             }
-            commentRepository.deleteById(commentDelete.getId());
+            commentRepository.deleteById(commentID);
             return new ResponseEntity<>("Comment deleted successfully", HttpStatus.OK);
         } catch (CommentNotFoundException ex) {
             return new ResponseEntity<>(new ErrorResponse(ex.getMessage()), HttpStatus.NOT_FOUND);

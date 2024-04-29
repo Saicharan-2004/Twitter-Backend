@@ -1,15 +1,15 @@
 package com.example.TwitterProject.Comment;
 
 public class UpdateComment {
-    private long commentId;
+    private int commentID;
     private String commentBody;
 
-    public long getCommentId() {
-        return commentId;
+    public int getCommentId() {
+        return commentID;
     }
 
-    public void setCommentId(long commentId) {
-        this.commentId = commentId;
+    public void setCommentId(int commentId) {
+        this.commentID = commentId;
     }
 
     public String getCommentBody() {

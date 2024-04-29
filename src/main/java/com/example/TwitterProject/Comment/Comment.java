@@ -10,7 +10,7 @@ public class Comment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long commentID;
+    private int commentID;
     private String commentBody;
 
     @ManyToOne
@@ -23,12 +23,12 @@ public class Comment {
 
     // getters and setters
 
-    public Long getCommentID() {
+    public int getCommentID() {
 
         return commentID;
     }
 
-    public void setCommentID(Long commentID) {
+    public void setCommentID(int commentID) {
         this.commentID = commentID;
     }
 
