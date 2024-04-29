@@ -31,7 +31,7 @@ public class PostController {
 
     @PostMapping("/post")
     public ResponseEntity<?> createPost(@RequestBody NewPostRequest newPostRequest) {
-        UserAccount user = userRepository.findById(newPostRequest.getUser_id()).orElse(null);
+        UserAccount user = userRepository.findById(newPostRequest.getUserID()).orElse(null);
         if (user == null) {
             return new ResponseEntity<>(new ErrorResponse("User does not exist"), HttpStatus.BAD_REQUEST);
         }
@@ -78,7 +78,7 @@ public class PostController {
     @PatchMapping("/post")
     public ResponseEntity<?> updatePost(@RequestBody PostUpdateRequest updatedPost) {
         try {
-            return postRepository.findById(updatedPost.getPostId()).map(post -> {
+            return postRepository.findById(updatedPost.getPostID()).map(post -> {
                 post.setPostBody(updatedPost.getPostBody());
                 postRepository.save(post);
                 return new ResponseEntity<>("Post edited successfully", HttpStatus.OK);

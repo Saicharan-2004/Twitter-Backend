@@ -79,7 +79,7 @@ public class CommentController {
     @PatchMapping("/comment")
     public ResponseEntity<?> updateComment(@RequestBody UpdateComment updatedComment) {
         try {
-            return commentRepository.findById(updatedComment.getCommentId()).map(comment -> {
+            return commentRepository.findById(updatedComment.getCommentID()).map(comment -> {
                 comment.setCommentBody(updatedComment.getCommentBody());
                 commentRepository.save(comment);
                 return new ResponseEntity<>("Comment edited successfully", HttpStatus.OK);

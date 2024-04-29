@@ -4,11 +4,11 @@ public class PostUpdateRequest {
     private int postID;
     private String postBody;
 
-    public int getPostId() {
+    public int getPostID() {
         return postID;
     }
 
-    public void setPostId(int postId) {
+    public void setPostID(int postId) {
         this.postID = postId;
     }
 

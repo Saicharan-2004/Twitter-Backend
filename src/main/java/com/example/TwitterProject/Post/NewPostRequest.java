@@ -2,7 +2,7 @@ package com.example.TwitterProject.Post;
 
 public class NewPostRequest {
     private String postBody;
-    private int userID;
+    private int userID; // Changed from user_id to userID
 
     public String getPostBody() {
         return postBody;
@@ -12,11 +12,11 @@ public class NewPostRequest {
         this.postBody = postBody;
     }
 
-    public int getUser_id() {
+    public int getUserID() { // Changed from getUser_id to getUserID
         return userID;
     }
 
-    public void setUser_id(int user_id) {
-        this.userID = user_id;
+    public void setUserID(int userID) { // Changed from setUser_id to setUserID
+        this.userID = userID;
     }
 }

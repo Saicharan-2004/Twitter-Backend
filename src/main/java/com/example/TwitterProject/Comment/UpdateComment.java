@@ -4,7 +4,7 @@ public class UpdateComment {
     private int commentID;
     private String commentBody;
 
-    public int getCommentId() {
+    public int getCommentID() {
         return commentID;
     }
 

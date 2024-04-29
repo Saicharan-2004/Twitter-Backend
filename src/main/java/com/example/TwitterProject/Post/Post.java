@@ -20,7 +20,7 @@ public class Post {
     private Date date;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", nullable = false)
+    @JoinColumn(name = "userID", nullable = false)
     private UserAccount userAccount;
 
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
