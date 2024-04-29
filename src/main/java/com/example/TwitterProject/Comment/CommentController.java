@@ -52,6 +52,7 @@ public class CommentController {
             return new ResponseEntity<>(new ErrorResponse(ex.getMessage()), HttpStatus.NOT_FOUND);
         }
     }
+
     @DeleteMapping("/comment")
     public ResponseEntity<?> deleteComment(@RequestBody retrieveCommentRequest commentDelete) {
         try {
