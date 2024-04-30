@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -95,7 +94,7 @@ public class PostController {
                 throw new PostNotFoundException("Post does not exist");
             }
             postRepository.deleteById(postID);
-            return new ResponseEntity<>("Post deleted successfully", HttpStatus.OK);
+            return new ResponseEntity<>("Post deleted", HttpStatus.OK);
         } catch (PostNotFoundException ex) {
             return new ResponseEntity<>(new ErrorResponse(ex.getMessage()), HttpStatus.NOT_FOUND);
         }
@@ -103,7 +102,7 @@ public class PostController {
 
     @GetMapping("/")
     public List<PostResponse> getAllPosts() {
-        List<Post> posts = postRepository.findAllPostsOrderByDateDesc();
+        List<Post> posts = postRepository.findAllByOrderByDateDesc();
 
         return posts.stream().map(post -> {
             PostResponse postResponse = new PostResponse();

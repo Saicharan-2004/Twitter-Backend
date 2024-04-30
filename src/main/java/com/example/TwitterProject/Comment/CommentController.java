@@ -44,9 +44,9 @@ public class CommentController {
     }
 
     @GetMapping("/comment")
-    public ResponseEntity<?> getCommentById(@RequestParam int CommentID) {
+    public ResponseEntity<?> getCommentById(@RequestParam int commentID) {
         try {
-            Comment comment = commentRepository.findById(CommentID).orElseThrow(() -> new CommentNotFoundException("Comment does not exist"));
+            Comment comment = commentRepository.findById(commentID).orElseThrow(() -> new CommentNotFoundException("Comment does not exist"));
 
             CommentResponse commentResponse = new CommentResponse();
             commentResponse.setCommentID(comment.getCommentID());
